@@ -1,0 +1,35 @@
+
+.product-list .product-list-item {
+    min-height: 42px;
+    text-align: left;
+    display: flex;
+    border: 1px solid lightblue;
+    margin: 1px 0;
+}
+
+.product-list .product-title {
+    width: 120px;
+}
+
+.product-list .product-description {
+    flex: 1;
+}
+
+.product-list .product-price {
+    width: 70px;
+}
+
+.product-list .product-image {
+    width: 40px;
+}
+
+.product-list img {
+    vertical-align: middle;
+}
+
+.product-list .cart-image>img {
+    height: 40px;
+    width: 40px;
+    padding-right: 7px;
+    cursor: pointer;
+}

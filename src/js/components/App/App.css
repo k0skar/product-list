@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+.vertically-center {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.main-header {
+  position: sticky;
+  top: 0;
+}
