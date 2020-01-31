@@ -5,7 +5,11 @@ import Cart from '../Cart/Cart';
 
 class App extends React.Component {
 
-  state = { showCart: false };
+  state = {
+    showCart: false,
+    cartItemsStore: []
+  };
+
 
   showCart = () => {
     this.setState({ showCart: true });
@@ -15,21 +19,56 @@ class App extends React.Component {
     this.setState({ showCart: false });
   };
 
+  handleRemoveCartItem = (id) => {
+    const newCartState = [...this.state.cartItemsStore]
+
+    for (const [index, value] of newCartState.entries()) {
+
+      if (value.id === id) {
+        newCartState.splice(index, 1)
+        break
+      }
+    }
+    this.setState({
+      cartItemsStore: newCartState
+    })
+  }
+
+  handleAddCartItem = (item) => {
+
+    this.setState({
+      cartItemsStore: [...this.state.cartItemsStore, item]
+    })
+  }
+
+  renderCart = () => {
+    return (
+      this.state.showCart
+        ?
+        <Cart
+          show={this.state.showCart}
+          handleClose={this.hideCart}
+          onRemoveClick={this.handleRemoveCartItem}
+          cartItems={this.state.cartItemsStore} />
+        :
+        ''
+    )
+  }
+
   render() {
     return <div className="App">
-        <header className="main-header">
-          <h5 >
-            Product list
+      <header className="main-header">
+        <h5 >
+          Product list
         </h5>
-          <button type="button" onClick={this.showCart}>
-            open
+        <button type="button" onClick={this.showCart}>
+          open
         </button>
-        </header>
+      </header>
 
-        <ProductList></ProductList>
-
-        <Cart show={this.state.showCart} handleClose={this.hideCart} />
-      </div>
+      <ProductList onAddCartClick={this.handleAddCartItem}></ProductList>
+      {this.renderCart()}
+    </div>
   }
 }
 
