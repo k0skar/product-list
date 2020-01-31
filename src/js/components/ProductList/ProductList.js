@@ -10,7 +10,8 @@ class ProductList extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/products')
+        //fetch('http://localhost:3000/products')
+        fetch('https://json-server-k.herokuapp.com/products')
             .then(response => response.json())
             .then(dataList => this.setState({ dataList }));
     }

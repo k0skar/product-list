@@ -62,7 +62,7 @@ class App extends React.Component {
           Product list
         </h5>
         <button type="button" onClick={this.showCart}>
-          open
+          OPEN CART
         </button>
       </header>
 
