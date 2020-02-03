@@ -46,7 +46,6 @@ class App extends React.Component {
       this.state.showCart
         ?
         <Cart
-          show={this.state.showCart}
           handleClose={this.hideCart}
           onRemoveClick={this.handleRemoveCartItem}
           cartItems={this.state.cartItemsStore} />

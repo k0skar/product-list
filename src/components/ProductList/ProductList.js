@@ -1,20 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import './ProductList.css';
 import ListItem from './ListItem/ListItem'
-// import { fetchAllProducts } from '../../connector'
+import { reqProducts } from '../../actions';
 
 class ProductList extends React.Component {
 
-    state = {
-        dataList: null,
+    componentDidMount() {
+        this.props.reqProducts();
     }
 
-    componentDidMount() {
-        //fetch('http://localhost:3000/products')
-        fetch('https://json-server-k.herokuapp.com/products')
-            .then(response => response.json())
-            .then(dataList => this.setState({ dataList }));
-    }
 
     getProductsList(list) {
 
@@ -24,12 +19,19 @@ class ProductList extends React.Component {
     }
 
     render() {
-        const list = this.state.dataList;
-
+        const list = this.props.products;
         return <main className="product-list">
             {list ? this.getProductsList(list) : <div>Loading. Wait, please!</div>}
         </main>
     }
 }
 
-export default ProductList;
+const mapDispatchToProps = {
+    reqProducts: reqProducts,
+};
+
+const mapStateToProps = (state) => ({
+    products: state.products,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList)

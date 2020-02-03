@@ -1,5 +1,5 @@
 import React from 'react';
-import icon_remove from '../../../../icons/icon-remove-basket.png'
+import icon_remove from '../../../icons/icon-remove-basket.png'
 
 const CartItem = ({ item, onRemoveClick }) => {
 

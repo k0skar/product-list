@@ -11,13 +11,12 @@ const Cart = ({cartItems, show, handleClose, onRemoveClick}) => {
         ))
     }
 
-
-    const showHideClassName = show ? "modal display-block" : "modal display-none";
     const cartContent = cartItems && cartItems.length ? getProductsList(cartItems) : <div>Your cart is empty!</div>
+    
     return (
-        <div className={showHideClassName}>
-            <div className="cart-container">
-                <section className="cart-list">
+        <div className='modal display-block'>
+            <div className='cart-container'>
+                <section className='cart-list'>
                     {cartContent}
                     <button onClick={handleClose}>close</button>
                 </section>

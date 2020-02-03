@@ -1,6 +1,6 @@
 import React from 'react';
 // import icon_remove from '../../../../icons/icon-remove-basket.png'
-import icon_add from '../../../../icons/icon-add-basket.png'
+import icon_add from '../../../icons/icon-add-basket.png'
 
 const ListItem = ({item, onAddCartClick, isInCart}) => {
   // const cartImage = isInCart ? icon_remove : icon_add;
