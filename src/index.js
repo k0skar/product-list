@@ -12,7 +12,11 @@ import rootSaga from './sagas';
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-    reducer,
+    reducer, 
+    {
+        products: [],
+        cart: {},
+    },
     applyMiddleware(sagaMiddleware, logger),
 );
 sagaMiddleware.run(rootSaga);

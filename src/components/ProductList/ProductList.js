@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import './ProductList.css';
 import ListItem from './ListItem/ListItem'
-import { reqProducts } from '../../actions';
+import { reqProducts, addToCart } from '../../actions';
 
 class ProductList extends React.Component {
 
@@ -10,11 +10,10 @@ class ProductList extends React.Component {
         this.props.reqProducts();
     }
 
-
     getProductsList(list) {
 
         return list.map((item, index) => (
-            <ListItem key={index} item={item} onAddCartClick={this.props.onAddCartClick} />
+            <ListItem key={index} item={item} onAddCartClick={this.props.addToCart} />
         ))
     }
 
@@ -28,6 +27,7 @@ class ProductList extends React.Component {
 
 const mapDispatchToProps = {
     reqProducts: reqProducts,
+    addToCart: addToCart,
 };
 
 const mapStateToProps = (state) => ({

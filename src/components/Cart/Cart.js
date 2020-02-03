@@ -1,18 +1,13 @@
 import React from 'react';
 import './Cart.css';
 import CartItem from './CartItem/CartItem'
+import { connect } from 'react-redux'
+import { removeFromCart } from '../../actions';
 
-const Cart = ({cartItems, show, handleClose, onRemoveClick}) => {
+const Cart = ({ cartItems, products, handleClose, removeFromCart }) => {
 
-    function getProductsList(list) {
-       
-        return list.map((item, index) => (
-            <CartItem key={index} item={item} onRemoveClick={onRemoveClick} />
-        ))
-    }
+    const cartContent = (Object.entries(cartItems).length) ? getProductsList(cartItems, products) : <div>Your cart is empty!</div>
 
-    const cartContent = cartItems && cartItems.length ? getProductsList(cartItems) : <div>Your cart is empty!</div>
-    
     return (
         <div className='modal display-block'>
             <div className='cart-container'>
@@ -25,4 +20,22 @@ const Cart = ({cartItems, show, handleClose, onRemoveClick}) => {
     );
 };
 
-export default Cart
+const mapDispatchToProps = {
+    removeFromCart: removeFromCart,
+};
+
+const mapStateToProps = (state) => ({
+    cartItems: state.cart,
+    products: state.products,
+})
+
+const getProductsList = (cart, products) => {
+    const itemArray = [];
+    for (const id in cart) {
+        itemArray.push(<CartItem key={id} item={products[id]} count={cart[id]} onRemoveClick={removeFromCart} />)
+    }
+    
+    return itemArray
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

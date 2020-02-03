@@ -7,7 +7,6 @@ class App extends React.Component {
 
   state = {
     showCart: false,
-    cartItemsStore: []
   };
 
 
@@ -18,41 +17,6 @@ class App extends React.Component {
   hideCart = () => {
     this.setState({ showCart: false });
   };
-
-  handleRemoveCartItem = (id) => {
-    const newCartState = [...this.state.cartItemsStore]
-
-    for (const [index, value] of newCartState.entries()) {
-
-      if (value.id === id) {
-        newCartState.splice(index, 1)
-        break
-      }
-    }
-    this.setState({
-      cartItemsStore: newCartState
-    })
-  }
-
-  handleAddCartItem = (item) => {
-
-    this.setState({
-      cartItemsStore: [...this.state.cartItemsStore, item]
-    })
-  }
-
-  renderCart = () => {
-    return (
-      this.state.showCart
-        ?
-        <Cart
-          handleClose={this.hideCart}
-          onRemoveClick={this.handleRemoveCartItem}
-          cartItems={this.state.cartItemsStore} />
-        :
-        ''
-    )
-  }
 
   render() {
     return <div className="App">
@@ -66,7 +30,7 @@ class App extends React.Component {
       </header>
 
       <ProductList onAddCartClick={this.handleAddCartItem}></ProductList>
-      {this.renderCart()}
+      {this.state.showCart ? <Cart handleClose={this.hideCart}/> : ''}
     </div>
   }
 }
