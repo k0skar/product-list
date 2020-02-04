@@ -2,9 +2,25 @@ import React from 'react';
 import './Cart.css';
 import CartItem from './CartItem/CartItem'
 import { connect } from 'react-redux'
-import { removeFromCart } from '../../actions';
+import { removeItemFromCart, removeOneFromCart, addOneToCart } from '../../actions';
 
-const Cart = ({ cartItems, products, handleClose, removeFromCart }) => {
+const Cart = ({ cartItems, products, handleClose, removeItem, removeOne, addOne }) => {
+
+    const getProductsList = (cart, products) => {
+        const itemArray = [];
+    
+        for (const id in cart) {
+            itemArray.push(<CartItem
+                key={id}
+                item={products[id]}
+                count={cart[id]}
+                onRemoveClick={removeItem}
+                onDecrement={removeOne}
+                onIncrement={addOne} />)
+        }
+    
+        return itemArray
+    }
 
     const cartContent = (Object.entries(cartItems).length) ? getProductsList(cartItems, products) : <div>Your cart is empty!</div>
 
@@ -21,21 +37,14 @@ const Cart = ({ cartItems, products, handleClose, removeFromCart }) => {
 };
 
 const mapDispatchToProps = {
-    removeFromCart: removeFromCart,
+    removeItem: removeItemFromCart,
+    removeOne: removeOneFromCart,
+    addOne: addOneToCart
 };
 
 const mapStateToProps = (state) => ({
     cartItems: state.cart,
     products: state.products,
 })
-
-const getProductsList = (cart, products) => {
-    const itemArray = [];
-    for (const id in cart) {
-        itemArray.push(<CartItem key={id} item={products[id]} count={cart[id]} onRemoveClick={removeFromCart} />)
-    }
-    
-    return itemArray
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

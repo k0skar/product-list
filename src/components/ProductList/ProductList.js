@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import './ProductList.css';
 import ListItem from './ListItem/ListItem'
-import { reqProducts, addToCart } from '../../actions';
+import { reqProducts, addOneToCart } from '../../actions';
 
 class ProductList extends React.Component {
 
@@ -27,7 +27,7 @@ class ProductList extends React.Component {
 
 const mapDispatchToProps = {
     reqProducts: reqProducts,
-    addToCart: addToCart,
+    addToCart: addOneToCart,
 };
 
 const mapStateToProps = (state) => ({

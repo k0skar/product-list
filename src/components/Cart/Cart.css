@@ -60,3 +60,13 @@
     padding-right: 7px;
     cursor: pointer;
 }
+
+.cart-container .product-list-counter {
+    display: flex;
+    width: 35px;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.cart-container .counter-dec, .cart-container .counter-inc {
+    cursor: pointer;
+}

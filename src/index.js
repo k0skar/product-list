@@ -19,11 +19,14 @@ const store = createStore(
     },
     applyMiddleware(sagaMiddleware, logger),
 );
+
 sagaMiddleware.run(rootSaga);
+
 render(
     <Provider store={store}>
         <App />,
    </Provider>,
     document.getElementById('root'),
 );
+
 if (module.hot) { module.hot.accept(App); }
