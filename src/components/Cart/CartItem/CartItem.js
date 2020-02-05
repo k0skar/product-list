@@ -1,9 +1,9 @@
 import React from 'react';
-import icon_remove from '../../../icons/icon-remove-basket.png'
-import Counter from './Counter'
+import icon_remove from '../../../icons/shopping-cart-remove.png';
+import Counter from './Counter';
 
 const CartItem = ({ item, onRemoveClick, count, onDecrement, onIncrement }) => {
-  debugger
+  
   return (
     <div className="product-list-item">
       <div className="product-title">{item.title}</div>

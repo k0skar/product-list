@@ -1,4 +1,9 @@
-const reducer = (state = {}, action) => {
+const defaultState = {
+    cart: {},
+    products: [],
+}
+
+const reducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'RES_PRODUCTS':
             return {
@@ -6,39 +11,52 @@ const reducer = (state = {}, action) => {
                 products: action.products
             }
         case 'ADD_ONE_TO_CART':
-            const newState = { ...state };
-            const id = action.id
-            newState.cart[id] ? newState.cart[id]++ : newState.cart[id] = 1;
+            let count = state.cart[action.id];
+            !(state.cart.hasOwnProperty(action.id)) && (count = 0);
 
             return {
-                ...newState,
-            }
-        case 'REMOVE_ONE_FROM_CART':
-            const newerState = { ...state };
-            let countItem = newerState.cart[action.id];
-
-            if (countItem) {
-                newerState.cart[action.id]--;
-                if (countItem < 1) {
-                    delete newerState.cart[action.id];
+                ...state,
+                cart: {
+                    ...state.cart,
+                    [action.id]: ++count
                 }
             }
 
-            return {
-                ...newerState,
-            }
-        case 'REMOVE_ITEM_FROM_CART':
-            
-            const newestState = { ...state };
-            const count = state.cart[action.id];
+        case 'REMOVE_ONE_FROM_CART': {
 
-            if (count) {
-                delete newestState.cart[action.id];
+            if (!state.cart.hasOwnProperty(action.id)) {
+
+                return { ...{}, ...state }
             }
-            
+
+            let count = state.cart[action.id];
+            if (count <= 1) {
+                return { ...{}, ...state }
+            }
+
             return {
-                ...newestState,
+                ...state,
+                cart: {
+                    ...state.cart,
+                    [action.id]: count && --count
+                }
             }
+        }
+
+        case 'REMOVE_ITEM_FROM_CART': {
+            const newState = {
+                ...state,
+                cart: {
+                    ...state.cart,
+                }
+            };
+
+            delete newState.cart[action.id];
+
+            return newState
+        }
+
+
 
         default:
             return state;

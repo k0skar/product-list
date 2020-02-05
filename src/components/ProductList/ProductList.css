@@ -1,10 +1,9 @@
-
 .product-list .product-list-item {
     min-height: 42px;
-    text-align: left;
     display: flex;
-    border: 1px solid grey;
-    margin: 1px 0;
+    align-items: center;
+    text-align: left;
+    padding: 2px 12px;
 }
 
 .product-list .product-title {
@@ -20,11 +19,22 @@
 }
 
 .product-list .product-image {
+    height: 40px;
     width: 40px;
 }
 
-.product-list img {
+.product-list .product-image>img {
     vertical-align: middle;
+}
+
+.product-list .cart-image {
+    height: 40px;
+    width: 47px;
+}
+
+.product-list .list-line-divider {
+    width: 90%;
+    border: 0.5px solid lightgray
 }
 
 .product-list .cart-image>img {

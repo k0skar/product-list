@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import ProductList from '../ProductList/ProductList';
 import Cart from '../Cart/Cart';
+import icon_cart from '../../icons/shopping-cart.png';
 
 class App extends React.Component {
 
@@ -21,16 +22,19 @@ class App extends React.Component {
   render() {
     return <div className="App">
       <header className="main-header">
-        <h5 >
+        <h2>
           Product list
-        </h5>
-        <button type="button" onClick={this.showCart}>
-          OPEN CART
-        </button>
+        </h2>
+        <input
+          type="image"
+          src={icon_cart}
+          alt='Open Cart'
+          onClick={this.showCart} 
+          className = 'button-cart'/>
       </header>
 
       <ProductList onAddCartClick={this.handleAddCartItem}></ProductList>
-      {this.state.showCart ? <Cart handleClose={this.hideCart}/> : ''}
+      {this.state.showCart ? <Cart handleClose={this.hideCart} /> : ''}
     </div>
   }
 }

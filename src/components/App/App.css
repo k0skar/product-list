@@ -8,6 +8,18 @@
   vertical-align: middle;
 }
 
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.main-header .button-cart {
+  height: 50px;
+  width: 50px;
+}
+
 /* .main-header {
   position: sticky;
   top: 0;

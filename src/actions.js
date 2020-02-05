@@ -6,7 +6,7 @@ export const addOneToCart = (id) => ({
     id: id
 });
 export const removeOneFromCart = (id) => ({
-    type: 'ADD_ONE_TO_CART',
+    type: 'REMOVE_ONE_FROM_CART',
     id: id
 });
 export const removeItemFromCart = (id) => ({

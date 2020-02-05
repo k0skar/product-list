@@ -8,17 +8,21 @@ const Cart = ({ cartItems, products, handleClose, removeItem, removeOne, addOne 
 
     const getProductsList = (cart, products) => {
         const itemArray = [];
-    
+
+        function findItem(id) {
+            return products.find((i) => i.id === parseInt(id))
+        }
+
         for (const id in cart) {
             itemArray.push(<CartItem
                 key={id}
-                item={products[id]}
+                item={findItem(id)}
                 count={cart[id]}
                 onRemoveClick={removeItem}
                 onDecrement={removeOne}
                 onIncrement={addOne} />)
         }
-    
+
         return itemArray
     }
 
