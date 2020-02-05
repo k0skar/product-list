@@ -12,6 +12,7 @@ const reducer = (state = defaultState, action) => {
             }
         case 'ADD_ONE_TO_CART':
             let count = state.cart[action.id];
+
             !(state.cart.hasOwnProperty(action.id)) && (count = 0);
 
             return {
@@ -25,13 +26,12 @@ const reducer = (state = defaultState, action) => {
         case 'REMOVE_ONE_FROM_CART': {
 
             if (!state.cart.hasOwnProperty(action.id)) {
-
                 return { ...{}, ...state }
             }
 
             let count = state.cart[action.id];
             if (count <= 1) {
-                return { ...{}, ...state }
+                return state
             }
 
             return {

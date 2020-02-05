@@ -6,6 +6,10 @@
     padding: 2px 12px;
 }
 
+.product-list>:nth-child(odd) {
+    background-color: #eaeaea;
+}
+
 .product-list .product-title {
     width: 120px;
 }
