@@ -26,15 +26,22 @@ const Cart = ({ cartItems, products, handleClose, removeItem, removeOne, addOne 
         return itemArray
     }
 
-    const cartContent = (Object.entries(cartItems).length) ? getProductsList(cartItems, products) : <div>Your cart is empty!</div>
+    const cartContent = (Object.entries(cartItems).length)
+        ? getProductsList(cartItems, products)
+        : <div className = 'empty-cart-message'>Your cart is empty!</div>
 
     return (
         <div className='modal display-block'>
             <div className='cart-container'>
+                <header>
+                    <h4>Shopping cart</h4>
+                </header>
                 <section className='cart-list'>
                     {cartContent}
-                    <button onClick={handleClose}>close</button>
                 </section>
+                <footer>
+                    <button onClick={handleClose}>close</button>
+                </footer>
             </div>
         </div>
     );

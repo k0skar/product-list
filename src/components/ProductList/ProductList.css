@@ -37,9 +37,18 @@
     border: 0.5px solid lightgray
 }
 
+.product-list .list-line-divider:last-child {
+    display: none;
+}
+
 .product-list .cart-image>img {
     height: 40px;
     width: 40px;
     padding-right: 7px;
     cursor: pointer;
 }
+
+.product-list .cart-image:active {
+    position: relative;
+    top: 1px;
+  }

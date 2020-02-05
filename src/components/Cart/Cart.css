@@ -18,40 +18,50 @@
     padding: 10px;
 }
 
-.cart-list {
-    border: 1px solid grey;
+.cart-container footer {
+    height: 32px;
+    margin: 6px;
 }
 
-.display-block {
-    display: block;
-}
+.cart-container footer>button {
+    background-color: #f1f1f1;
+    border-radius: 1px;
+    border: 1px solid #c1c1c1;
+    display: inline-block;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 9px 20px;
+    margin: 0 3px;
+  }
+  
+  .cart-container footer>button:hover {
+    background-color: #eceaea;
+  }
+  
+  .cart-container footer>button:active {
+    position: relative;
+    top: 1px;
+  }
 
-.display-none {
-    display: none;
-}
-
-.cart-container .product-list-item {
+.cart-container .cart-list-item {
     min-height: 42px;
     text-align: left;
     display: flex;
-    border-bottom: 1px solid grey;
+    align-items: center;
     padding: 0 5px;
 }
 
-.cart-container .product-title {
+.cart-container .cart-item-title {
     flex: 1;
 }
 
-.cart-container .product-price {
+.cart-container .empty-cart-message {
+    height: 42px;
+}
+
+.cart-container .cart-item-price {
     width: 70px;
-}
-
-.cart-container .product-image {
-    width: 40px;
-}
-
-.cart-container img {
-    vertical-align: middle;
 }
 
 .cart-container .remove-image>img {
@@ -61,12 +71,38 @@
     cursor: pointer;
 }
 
-.cart-container .product-list-counter {
+.cart-container .cart-item-counter {
     display: flex;
-    width: 35px;
+    width: 49px;
+    margin: 0px 10px;
     justify-content: space-between;
+    align-items: center;
     font-weight: bold;
+    border: 0.5px solid lightgray;
+    line-height: 30px;
 }
+
+.cart-container .counter-count {
+    line-height: 23px;
+    width: 29px;
+    text-align: center;
+}
+
+
 .cart-container .counter-dec, .cart-container .counter-inc {
     cursor: pointer;
+    width: 15px;
+    text-align: center;
+}
+
+.cart-container header>h4 {
+    margin: 8px;
+}
+.cart-container hr.list-line-divider {
+    width: 90%;
+    border: 0.5px solid lightgray
+}
+
+.cart-container hr.list-line-divider:last-child {
+    display: none;
 }
