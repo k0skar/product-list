@@ -3,7 +3,6 @@ import createSagaMiddleware from 'redux-saga';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { logger } from 'redux-logger';
 import reducer from './reducers';
 import './index.css';
 import App from './components/App/App';
@@ -17,7 +16,7 @@ const store = createStore(
         products: [],
         cart: {},
     },
-    applyMiddleware(sagaMiddleware, logger),
+    applyMiddleware(sagaMiddleware),
 );
 
 sagaMiddleware.run(rootSaga);
